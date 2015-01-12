@@ -44,7 +44,7 @@ public:
 
 private:
 	std::vector<int> fParents;
-	std::vector<int> fVisited;
+	std::vector<bool> fVisited;
 };
 
 // Connected Components
