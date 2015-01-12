@@ -81,7 +81,9 @@ void DepthFirstPaths::dfs(const Graph &g, int src) {
 }
 
 bool DepthFirstPaths::hasPathTo(int v) {
-	return fVisited[v];
+	if(v >= 0 && v < (int)fVisited.size())
+		return fVisited[v];
+	return false;
 }
 
 vector<int> DepthFirstPaths::pathTo(int v) {
@@ -118,7 +120,9 @@ BreadthFirstPaths::BreadthFirstPaths(const Graph &g, int src): fParents(g.V()), 
 }
 
 bool BreadthFirstPaths::hasPathTo(int v) {
-	return fVisited[v];
+	if(v >= 0 && v < (int)fVisited.size())
+		return fVisited[v];
+	return false;
 }
 
 vector<int> BreadthFirstPaths::pathTo(int v) {
@@ -220,7 +224,27 @@ bool TwoColor::isBipartite() {
 
 //================================================================================
 
+DegreesOfSeparation::DegreesOfSeparation(const string &filename, const string &delim, const string &src) {
+	fSG = new SymbolGraph(filename,delim);
+	const Graph g = fSG->G();
+	fPaths = new BreadthFirstPaths(g,fSG->index(src));
+}
 
+DegreesOfSeparation::~DegreesOfSeparation() {
+	delete fPaths;
+	delete fSG;
+}
+
+vector<string> DegreesOfSeparation::getPathFrom(const string &to) {
+	vector<string> path;
+	int idTo = fSG->index(to);
+	if(fPaths->hasPathTo(idTo)) {
+		for(int x: fPaths->pathTo(idTo)) {
+			path.push_back(fSG->name(x));
+		}
+	}
+	return path;
+}
 
 
 

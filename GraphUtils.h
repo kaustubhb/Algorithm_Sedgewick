@@ -86,6 +86,17 @@ private:
 	void dfs(const Graph &g, int v);
 };
 
+class DegreesOfSeparation {
+public:
+	DegreesOfSeparation(const std::string &filename, const std::string &delim, const std::string &src);
+	~DegreesOfSeparation();
+	std::vector<std::string> getPathFrom(const std::string &to);
+
+private:
+	BreadthFirstPaths *fPaths;
+	SymbolGraph *fSG;
+};
+
 
 #endif /* GRAPHUTILS_H_ */
 

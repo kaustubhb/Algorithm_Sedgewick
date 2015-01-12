@@ -109,6 +109,17 @@ void testSymbolGraph(string filename, string delim) {
 	}
 }
 
+void testDegreesOfSeparation(string filename, string delim, string src, string to) {
+	DegreesOfSeparation ds(filename, delim, src);
+	vector<string> path = ds.getPathFrom(to);
+	for(string s: path) {
+		cout << s << endl;
+	}
+	if(path.size() == 0)
+		cout << "No such path exists" << endl;
+
+}
+
 #endif /* TESTSEARCH_H_ */
 
 
