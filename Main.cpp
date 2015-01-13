@@ -17,6 +17,10 @@ int main() {
 	//testSymbolGraph("movies.txt", "/");
 
 	//testDegreesOfSeparation("movies.txt", "/", "Bacon, Kevin", "Kidman, Nicole");
-	testDegreesOfSeparation("movies.txt", "/", "Bacon, Kevin", "Grant, Cary");
+	//testDegreesOfSeparation("movies.txt", "/", "Bacon, Kevin", "Grant, Cary");
 	//testDegreesOfSeparation("movies.txt", "/", "Pitt, Brad", "Jolie, Angelina");
+
+	//testDirectedDFS("tinyDG.txt", {1});
+	//testDirectedDFS("tinyDG.txt", {2});
+	testDirectedDFS("tinyDG.txt", {6,2,1});
 }

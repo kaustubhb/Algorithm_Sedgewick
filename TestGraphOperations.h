@@ -8,7 +8,7 @@
 using namespace std;
 
 int testGraphInput() {
-	std::ifstream fin("tinyG.txt");
+	ifstream fin("tinyG.txt");
 	if(!fin) {
 		std::cerr << "File read error" << std::endl;
 		return 0;
@@ -117,7 +117,17 @@ void testDegreesOfSeparation(string filename, string delim, string src, string t
 	}
 	if(path.size() == 0)
 		cout << "No such path exists" << endl;
+}
 
+void testDirectedDFS(string filename, vector<int> sources) {
+	ifstream fin(filename);
+	Digraph dg(fin);
+	DirectedDFS ddfs(dg, sources);
+	for(int i=0;i<dg.V();++i) {
+		if(ddfs.marked(i))
+			cout << i << " ";
+	}
+	cout << endl;
 }
 
 #endif /* TESTSEARCH_H_ */

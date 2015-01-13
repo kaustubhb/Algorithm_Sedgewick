@@ -69,8 +69,6 @@ SymbolGraph::SymbolGraph(const string &filename, const string &delim): fkeytoid{
 	while(getline(fin, str)) {
 		vector<string> line = split(str, delim);
 		int v = index(line[0]);
-//		assert(line.size() == 2);
-//		assert(contains(line[0]) && contains(line[1]));
 		for(size_t i=1;i<line.size();++i) {
 			gp->addEdge(v, index(line[i]));
 		}
@@ -121,6 +119,54 @@ int SymbolGraph::index(const string &key) const {
 const Graph& SymbolGraph::G() const{
 	return *gp;
 }
+
+//===============================================================================
+
+Digraph::Digraph(ifstream &fin): fEdges(0) {
+	int ne;
+	fin >> fVertices >> ne;
+
+	for(int i=0;i<fVertices;++i)
+		fAdj.push_back(vector<int>());
+
+	while(ne--) {
+		int u,v;
+		fin >> u >> v;
+		addEdge(u,v);
+	}
+}
+
+Digraph::Digraph(int v): fVertices(v), fEdges(0), fAdj(v) {
+}
+
+void Digraph::addEdge(int u, int v) {
+	fAdj[u].push_back(v);
+	++fEdges;
+}
+
+int Digraph::V() const{
+	return fVertices;
+}
+
+int Digraph::E() const {
+	return fEdges;
+}
+
+vector<int> Digraph::adj(int v) const {
+	return fAdj[v];
+}
+
+Digraph Digraph::reverse() const {
+	Digraph rev(V());
+	for(int i=0;i<V(); ++i) {
+		for(int u: fAdj[i]) {
+			rev.addEdge(u,i);
+		}
+	}
+	return rev;
+}
+
+
 
 
 

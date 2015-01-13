@@ -246,7 +246,32 @@ vector<string> DegreesOfSeparation::getPathFrom(const string &to) {
 	return path;
 }
 
+//================================================================================
 
+DirectedDFS::DirectedDFS(const Digraph &dg, int src): fVisited(dg.V(), false) {
+	dfs(dg, src);
+}
+
+DirectedDFS::DirectedDFS(const Digraph &dg, vector<int> sources):fVisited(dg.V(), false) {
+	for(int i: sources) {
+		if(!marked(i))
+			dfs(dg, i);
+	}
+}
+
+bool DirectedDFS::marked(int v) {
+	if(v >= 0 && v < (int)fVisited.size())
+		return fVisited[v];
+	return false;
+}
+
+void DirectedDFS::dfs(const Digraph &dg, int u) {
+	fVisited[u] = true;
+	for(int v: dg.adj(u)) {
+		if(!marked(v))
+			dfs(dg, v);
+	}
+}
 
 
 

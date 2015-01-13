@@ -97,6 +97,17 @@ private:
 	SymbolGraph *fSG;
 };
 
+class DirectedDFS {
+public:
+	DirectedDFS(const Digraph &dg, int src);
+	DirectedDFS(const Digraph &dg, std::vector<int> sources);
+	bool marked(int v);
+
+private:
+	void dfs(const Digraph &dg, int u);
+	std::vector<bool> fVisited;
+};
+
 
 #endif /* GRAPHUTILS_H_ */
 

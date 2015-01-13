@@ -53,6 +53,12 @@ public:
 	int E() const;
 	void addEdge(int u, int v);
 	std::vector<int> adj(int v) const;
+	Digraph reverse() const;
+
+private:
+	int fVertices;
+	int fEdges;
+	std::vector<std::vector<int> > fAdj;
 };
 
 #endif /* GRAPH_H_ */
