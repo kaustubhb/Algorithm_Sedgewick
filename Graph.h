@@ -45,4 +45,14 @@ private:
 	Graph *gp;	// corresponding graph
 };
 
+class Digraph {
+public:
+	Digraph(int nv);	// no of vertices
+	Digraph(std::ifstream &fin);
+	int V() const;
+	int E() const;
+	void addEdge(int u, int v);
+	std::vector<int> adj(int v) const;
+};
+
 #endif /* GRAPH_H_ */

@@ -17,6 +17,6 @@ int main() {
 	//testSymbolGraph("movies.txt", "/");
 
 	//testDegreesOfSeparation("movies.txt", "/", "Bacon, Kevin", "Kidman, Nicole");
-	//testDegreesOfSeparation("movies.txt", "/", "Bacon, Kevin", "Grant, Cary");
-	testDegreesOfSeparation("movies.txt", "/", "Pitt, Brad", "Jolie, Angelina");
+	testDegreesOfSeparation("movies.txt", "/", "Bacon, Kevin", "Grant, Cary");
+	//testDegreesOfSeparation("movies.txt", "/", "Pitt, Brad", "Jolie, Angelina");
 }
