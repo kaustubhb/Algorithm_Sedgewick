@@ -130,6 +130,21 @@ void testDirectedDFS(string filename, vector<int> sources) {
 	cout << endl;
 }
 
+void testDirectedCycle(string filename) {
+	ifstream fin(filename);
+	Digraph dg(fin);
+	DirectedCycle dcyc(dg);
+	if (dcyc.hasCycle()) {
+		cout << "Cycle found" << endl;
+		for (int x : dcyc.cycle())
+			cout << x << " ";
+		cout << endl;
+	}
+	else {
+		cout << "No cycle found" << endl;
+	}
+}
+
 #endif /* TESTSEARCH_H_ */
 
 

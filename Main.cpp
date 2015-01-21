@@ -22,5 +22,6 @@ int main() {
 
 	//testDirectedDFS("tinyDG.txt", {1});
 	//testDirectedDFS("tinyDG.txt", {2});
-	testDirectedDFS("tinyDG.txt", {6,2,1});
+	//testDirectedDFS("tinyDG.txt", {6,2,1});
+	testDirectedCycle("tinyDG.txt");
 }

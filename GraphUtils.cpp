@@ -2,6 +2,7 @@
 #include <sstream>
 #include <algorithm>
 #include <queue>
+#include <stack>
 using namespace std;
 
 string GraphUtils::toString(const Graph &g) {
@@ -273,9 +274,43 @@ void DirectedDFS::dfs(const Digraph &dg, int u) {
 	}
 }
 
+//================================================================================
 
+DirectedCycle::DirectedCycle(const Digraph &dg): fVisited(dg.V(),false), fHasCycle(false) {
+	for (int i = 0; i < dg.V(); ++i) {
+		if (!fvisited[i]) {
+			fparent[i] = i;
+			dfs(dg, i);
+			if (fHasCycle)
+				return;
+		}
+	}
+}
 
+void DirectedCycle::dfs(const Digraph &dg, int u) {
+	fvisited[u] = true;
+	fonstack[u] = true;
 
+	for (int v : dg.adj(u)) {
+		if (!fvisited[v]) {
+			fparent[v] = u;
+			dfs(dg, v);
+		}
+		else {
+			if (fonstack[v]) {	// we have a cycle :)
+
+			}
+		}
+	}
+}
+
+bool DirectedCycle::hasCycle() {
+	return fHasCycle;
+}
+
+stack<int> DirectedCycle::cycle() {
+	return fcycle;;
+}
 
 
 

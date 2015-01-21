@@ -3,6 +3,7 @@
 #include "Graph.h"
 #include <string>
 #include <vector>
+#include <stack>
 
 class GraphUtils {
 public:
@@ -108,6 +109,20 @@ private:
 	std::vector<bool> fVisited;
 };
 
+class DirectedCycle {
+public:
+	DirectedCycle(const Digraph &dg);
+	bool hasCycle();
+	std::stack<int> cycle();
+
+private:
+	std::vector<bool> fvisited;
+	std::vector<bool> fonstack;
+	std::vector<int> fparent;
+	std::stack<int> fcycle;
+	bool fHasCycle;
+	void dfs(const Digraph &dg, int src);
+};
 
 #endif /* GRAPHUTILS_H_ */
 
